@@ -7,15 +7,22 @@ function App() {
   const onSubmit = (event) => {
     event.preventDefault();
     if (toDo === "") {
-      return;
+      return alert("Please your to do list.");
     }
     setToDos((currentArray) => [toDo, ...currentArray]);
     setToDo(""); // input값 비우기
   };
+
+  // delete
+
+  const onDelete = (index) => {
+    setToDos(toDos.filter((item, todoIndex) => index !== todoIndex));
+  };
+
   console.log(toDos);
 
   return (
-    <div>
+    <div className={styles.wrapper}>
       <h1>My To Dos ({toDos.length})</h1>
       <form onSubmit={onSubmit}>
         <input
@@ -26,10 +33,13 @@ function App() {
         />
         <button>Add To Do</button>
       </form>
-      <hr />
+
       <ul>
         {toDos.map((item, index) => (
-          <li key={index}>{item}</li>
+          <li key={index}>
+            {item}
+            <button onClick={() => onDelete(index)}>Delete</button>
+          </li>
         ))}
       </ul>
     </div>
