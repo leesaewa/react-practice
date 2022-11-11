@@ -1,0 +1,16 @@
+@mixin flexbox() {
+  display: flex;
+}
+
+@mixin width($ws: 1200px, $mgU: 0, $mgB: 0) {
+  width: 100%;
+  max-width: $ws;
+  text-align: center;
+  margin: $mgU auto $mgB;
+}
+@mixin gridLayout($min: 100px, $gridAI: center, $cGap: 1rem) {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax($min, 1fr));
+  align-items: $gridAI;
+  column-gap: $cGap;
+}

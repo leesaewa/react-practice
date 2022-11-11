@@ -34,11 +34,12 @@ function Home() {
   console.log(movies);
 
   return (
-    <div>
+    <section id="main">
+      <h1>Movie Information</h1>
       {loading ? (
-        <h1>loading...</h1>
+        <div className="loading">loading...</div>
       ) : (
-        <div>
+        <ul className="movie-wrapper">
           {movies.map((movie) => (
             <Movie
               key={movie.id}
@@ -49,9 +50,9 @@ function Home() {
               genres={movie.genres}
             />
           ))}
-        </div>
+        </ul>
       )}
-    </div>
+    </section>
   );
 }
 
