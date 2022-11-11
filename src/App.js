@@ -1,52 +1,57 @@
-import { useEffect, useState } from "react";
+import { useState, useEffect } from "react";
 
 function App() {
   const [loading, setLoading] = useState(true);
-  const [coins, setCoins] = useState([]);
-  const [cost, setCost] = useState(1);
-  const [amount, setAmount] = useState(1);
+  const [movies, setMovies] = useState([]);
+  const getMovies = async () => {
+    const json = await (
+      await fetch(
+        `https://yts.mx/api/v2/list_movies.json?minimum_rating=8.8&sort_by=year`
+      )
+    ).json();
 
-  const onChange = (e) => {
-    setCost(e.target.value);
-    setAmount(1);
-  };
-  const inputAmount = (e) => {
-    setAmount(e.target.value);
-    // console.log(e.target.value);
+    setMovies(json.data.movies);
+    setLoading(false);
+
+    // 위는 아래의 간편 버전
+    // fetch(
+    //   `https://yts.mx/api/v2/list_movies.json?minimum_rating=8.8&sort_by=year`
+    // )
+    //   .then((response) => response.json())
+    //   .then((json) => {
+    //     setMovies(json.data.movies);
+    //     setLoading(false);
+    //   });
   };
 
   useEffect(() => {
-    fetch("https://api.coinpaprika.com/v1/tickers")
-      .then((response) => response.json())
-      .then((json) => {
-        setCoins(json);
-        setLoading(false);
-      });
-  }, []); // 빈 배열-> 한 번만 동작
+    getMovies();
+  }, []);
+
+  console.log(movies);
+
   return (
     <div>
-      <h1>The Coins! {loading ? "" : `(${coins.length})`}</h1>
       {loading ? (
-        <strong>Loading...</strong>
+        <h1>loading...</h1>
       ) : (
-        <select onChange={onChange}>
-          <option>Select Coins</option>
-          {coins.map((coin, index) => (
-            <option key={index} value={coin.quotes.USD.price}>
-              {coin.name} ({coin.symbol}):${coin.quotes.USD.price} USD
-            </option>
+        <div>
+          {movies.map((movie) => (
+            <div key={movie.id}>
+              <h2>{movie.title}</h2>
+              <img src={movie.medium_cover_image} />
+              <p>{movie.summary}</p>
+              <ul>
+                {movie.genres.map((genre) => (
+                  <li key={genre}>{genre}</li>
+                ))}
+              </ul>
+            </div>
           ))}
-        </select>
+        </div>
       )}
-      <h2>Please enter the amount to convert to coins.</h2>
-      <input
-        type="number"
-        placeholder="please enter the amount"
-        onChange={inputAmount}
-        value={amount}
-      />
-      $<p>You can buy {amount / cost}</p>
     </div>
   );
 }
+
 export default App;

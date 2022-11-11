@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 
-function Todolist() {
+function App() {
   const [toDo, setToDo] = useState(""); //setToDo는 toDo값을 수정하는 함수.
   const [toDos, setToDos] = useState([]);
   const onChange = (event) => setToDo(event.target.value);
@@ -22,7 +22,7 @@ function Todolist() {
   console.log(toDos);
 
   return (
-    <div className={styles.wrapper}>
+    <div>
       <h1>My To Dos ({toDos.length})</h1>
       <form onSubmit={onSubmit}>
         <input
@@ -46,4 +46,4 @@ function Todolist() {
   );
 }
 
-export default Todolist;
+export default App;
