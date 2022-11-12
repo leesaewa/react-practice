@@ -8,14 +8,11 @@ function Movie({ id, coverImg, title, summary, genres }) {
       <img src={coverImg} alt={title} />
       <p>{summary}</p>
 
-      <div className="genre-wrap">
-        <h3>Genre</h3>
-        <ul>
-          {genres.map((genre) => (
-            <li key={genre}>{genre}</li>
-          ))}
-        </ul>
-      </div>
+      <ul className="genre-wrap">
+        {genres.map((genre) => (
+          <li key={genre}>{genre}</li>
+        ))}
+      </ul>
       <Link to={`/movie/${id}`} className="button">
         More Detail
       </Link>

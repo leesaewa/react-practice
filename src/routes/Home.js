@@ -34,7 +34,7 @@ function Home() {
   console.log(movies);
 
   return (
-    <section id="main">
+    <main id="main">
       <h1>Movie Information</h1>
       {loading ? (
         <div className="loading">loading...</div>
@@ -52,7 +52,7 @@ function Home() {
           ))}
         </ul>
       )}
-    </section>
+    </main>
   );
 }
 

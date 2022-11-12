@@ -1,5 +1,8 @@
-@mixin flexbox() {
+@mixin flexbox($flexW: nowrap, $flexJC: center, $flexAI: center) {
   display: flex;
+  flex-wrap: $flexW;
+  justify-content: $flexJC;
+  align-items: $flexAI;
 }
 
 @mixin width($ws: 1200px, $mgU: 0, $mgB: 0) {
@@ -13,4 +16,9 @@
   grid-template-columns: repeat(auto-fill, minmax($min, 1fr));
   align-items: $gridAI;
   column-gap: $cGap;
+}
+@mixin subTtl() {
+  margin: 2rem auto;
+  font-size: 1.4em;
+  letter-spacing: 2px;
 }
