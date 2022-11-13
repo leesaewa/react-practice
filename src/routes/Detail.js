@@ -37,10 +37,12 @@ function Detail() {
       ) : (
         <section>
           <header>
-            <button onClick={backHistory}>
-              <IoIosArrowBack />
-            </button>
-            <h2>{movie.title}</h2>
+            <div>
+              <button onClick={backHistory}>
+                <IoIosArrowBack />
+              </button>
+              <h2>{movie.title}</h2>
+            </div>
           </header>
 
           <aside
@@ -53,7 +55,7 @@ function Detail() {
           <div className="movie-wrap">
             <div className="movie-wrap__info">
               <h1>{movie.title}</h1>
-              <ul>
+              <ul className="info-wrap">
                 <li>{movie.year}</li>
                 <li>{movie.runtime}m</li>
                 <li>
@@ -62,6 +64,12 @@ function Detail() {
                 <li>
                   <IoMdThumbsUp /> {movie.like_count}
                 </li>
+              </ul>
+
+              <ul className="genre-wrap">
+                {genres.map((genre) => (
+                  <li key={genre}>{genre}</li>
+                ))}
               </ul>
             </div>
 
@@ -77,18 +85,13 @@ function Detail() {
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                   allowFullScreen
                 ></iframe>
+
+                <div className="movie-wrap__story">
+                  <h4>Storyline</h4>
+                  <p>{movie.description_full}</p>
+                </div>
               </figcaption>
             </figure>
-
-            <div className="movie-wrap__story">
-              <h4>Storyline</h4>
-              <p>{movie.description_full}</p>
-              <ul className="genre-wrap">
-                {genres.map((genre) => (
-                  <li key={genre}>{genre}</li>
-                ))}
-              </ul>
-            </div>
           </div>
         </section>
       )}
