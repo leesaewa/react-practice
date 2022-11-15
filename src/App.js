@@ -9,6 +9,9 @@ function App() {
   return (
     <Router>
       <Switch>
+        {/* <Route path="/group/">
+          <Group />
+        </Route> */}
         <Route path="/movie/:id">
           <Detail />
         </Route>

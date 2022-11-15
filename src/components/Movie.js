@@ -1,9 +1,22 @@
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 
-function Movie({ id, coverImg, title, summary, genres }) {
+function Movie({
+  id,
+  coverImg,
+  title,
+  summary,
+  genres,
+  numbSlide,
+  currentSlide,
+}) {
   return (
-    <li className="movie-wrapper__item">
+    <li
+      className="movie-wrapper__item"
+      style={{
+        transform: `translateX(${(-100 / numbSlide) * (0.5 + currentSlide)}%)`,
+      }}
+    >
       <h2>{title}</h2>
       <img src={coverImg} alt={title} />
       <p>{summary}</p>
