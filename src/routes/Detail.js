@@ -31,7 +31,7 @@ function Detail() {
     ).json();
 
     setSuggestion(json.data.movies);
-    console.log(json);
+    // console.log(json);
   }, [id]);
 
   useEffect(() => {
@@ -106,14 +106,17 @@ function Detail() {
           </div>
 
           <article className="Suggestion-wrap">
-            <h2>Suggestions</h2>
-            {movies.map((sug) => (
-              <Suggestions
-                key={sug.id}
-                title={sug.title}
-                coverImg={sug.medium_cover_image}
-              />
-            ))}
+            <h2>suggest this movie.</h2>
+            <ul>
+              {movies.map((sug) => (
+                <Suggestions
+                  key={sug.id}
+                  title={sug.title}
+                  coverImg={sug.medium_cover_image}
+                  id={sug.id}
+                />
+              ))}
+            </ul>
           </article>
         </section>
       )}

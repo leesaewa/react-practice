@@ -17,8 +17,9 @@
   align-items: $gridAI;
   column-gap: $cGap;
 }
-@mixin subTtl() {
+@mixin subTtl($fontSize: 1.4em) {
   margin: 2rem auto;
-  font-size: 1.4em;
+  font-size: $fontSize;
   letter-spacing: 2px;
+  text-transform: uppercase;
 }

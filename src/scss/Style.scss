@@ -2,6 +2,9 @@
 @import "_variable.scss";
 @import "_mixin.scss";
 
+* {
+  box-sizing: border-box;
+}
 body,
 html {
   font-family: "Exo 2", sans-serif;
@@ -36,6 +39,7 @@ html {
   }
   img {
     max-width: 100%;
+    vertical-align: bottom;
   }
 
   figure {
@@ -67,13 +71,13 @@ main {
   .genre-wrap {
     @include flexbox($flexJC: flex-start, $flexW: wrap);
     column-gap: 1rem;
+    row-gap: 1rem;
 
     li {
       padding: 0 1rem 0.1rem;
       font-weight: 300;
       border-radius: 50px;
       border: 1px solid $black;
-      margin-bottom: 1rem;
     }
   }
 }
@@ -122,7 +126,6 @@ main {
     overflow: hidden;
 
     .movie-wrapper__item {
-      border: 1px solid red;
       width: 18%;
       background-color: $white;
       color: $black;
@@ -272,12 +275,13 @@ main {
       .genre-wrap {
         li {
           border: 1px solid $white;
-          margin-bottom: 2rem;
         }
       }
     }
 
     .movie-wrap__img {
+      margin-top: 3rem;
+
       figcaption {
         h3 {
           @include subTtl;
@@ -297,6 +301,60 @@ main {
         text-align: left;
         border-top: 1px dotted $white;
         padding-top: 2rem;
+      }
+    }
+  }
+
+  .Suggestion-wrap {
+    background-color: $white;
+    @include width($ws: 90%, $mgU: 4rem);
+    padding: 1rem;
+    border-radius: 2rem;
+
+    h2 {
+      @include subTtl();
+      color: $black;
+    }
+
+    ul {
+      @include flexbox($flexW: wrap, $flexAI: inherit, $flexJC: space-between);
+      row-gap: 1rem;
+      padding-bottom: 2rem;
+
+      li {
+        width: 48%;
+
+        figure {
+          overflow: hidden;
+          border-radius: 1rem;
+          background-color: $black;
+          padding: 1rem;
+
+          img {
+            border-radius: 1rem;
+          }
+
+          figcaption {
+            h3 {
+              color: $white;
+              margin: 0.6rem 0 1rem;
+              overflow: hidden;
+              display: -webkit-box;
+              -webkit-line-clamp: 2;
+              -webkit-box-orient: vertical;
+              word-break: keep-all;
+            }
+
+            a {
+              background-color: $white;
+              padding: 0.6rem 1rem;
+              font-weight: bold;
+              font-size: 0.7em;
+              text-transform: uppercase;
+              border-radius: 50px;
+            }
+          }
+        }
       }
     }
   }
@@ -374,6 +432,7 @@ main {
     header {
       div {
         @include width;
+        padding: 1rem 0 1rem 0;
       }
     }
 
@@ -393,6 +452,72 @@ main {
 
         figcaption {
           width: 56%;
+        }
+      }
+    }
+
+    .Suggestion-wrap {
+      max-width: 1200px;
+      padding: 2rem;
+
+      h2 {
+        font-size: 2.4em;
+      }
+
+      ul {
+        li {
+          width: 23%;
+
+          figure {
+            position: relative;
+            padding: 0;
+            background-color: $white;
+            border: 1px solid $black;
+
+            img {
+              width: 100%;
+              transition: $easeFive;
+            }
+
+            &:hover {
+              img {
+                transform: scale(1.2);
+              }
+              figcaption {
+                opacity: 1;
+                visibility: visible;
+
+                a {
+                  padding: 0.6rem 4rem;
+                }
+              }
+            }
+            figcaption {
+              @include flexbox($flexW: wrap);
+              position: absolute;
+              top: 0;
+              left: 0;
+              background-color: rgba(0, 0, 0, 0.7);
+              width: 100%;
+              height: 100%;
+              transition: $easeFive;
+              opacity: 0;
+              visibility: hidden;
+
+              h3 {
+                width: 100%;
+                margin: 0;
+                font-size: 1.8em;
+                padding: 0 2rem;
+                -webkit-line-clamp: unset;
+              }
+
+              a {
+                font-size: 1.2em;
+                transition: $easeFive;
+              }
+            }
+          }
         }
       }
     }
