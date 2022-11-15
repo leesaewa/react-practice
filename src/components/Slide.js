@@ -2,16 +2,12 @@ import { useState, useEffect } from "react";
 import Movie from "./Movie";
 import SlideButton from "./SlideButton";
 
-function Slide() {
+function Slide({ movieApi }) {
   const [loading, setLoading] = useState(true);
   const [movies, setMovies] = useState([]);
 
   const getMovies = async () => {
-    const json = await (
-      await fetch(
-        `https://yts.mx/api/v2/list_movies.json?minimum_rating=8.8&sort_by=year`
-      )
-    ).json();
+    const json = await (await fetch(movieApi)).json();
 
     setMovies(json.data.movies);
     setLoading(false);
@@ -19,16 +15,13 @@ function Slide() {
 
   useEffect(() => {
     getMovies();
-  }, []);
+  }, [setMovies]);
 
   //
   //
-  const slide = [movies];
+  const slide = ["1", "2"];
   const numbSlide = slide.length;
   const [currentSlide, setCurrentSlide] = useState(0);
-  console.log(numbSlide);
-
-  // console.log(setCurrentSlide);
 
   function handleSwipe(direction) {
     setCurrentSlide((currentSlide) => currentSlide + direction);
