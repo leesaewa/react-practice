@@ -1,18 +1,20 @@
 // 기본적으로 로딩하거나 영화 리스트를 보여주는 화면
-
-import { useState } from "react";
 import Slide from "../components/Slide";
 
 function Home() {
   const GROUP_BOX = {
     "High Rating": "minimum_rating=8",
-    Thriller: "genre=thriller",
-    Mystery: "genre=mystery",
-    Crime: "genre=crime",
     Drama: "genre=drama",
     Adventure: "genre=adventure",
+    Fantasy: "genre=fantasy",
+    "Sci-fi": "genre=sci-fi",
+    Crime: "genre=crime",
+    Mystery: "genre=mystery",
+    Thriller: "genre=thriller",
+    Horror: "genre=horror",
     Action: "genre=action",
-    Music: "genre=music",
+    Comedy: "genre=comedy",
+    Animation: "genre=animation",
     Romance: "genre=romance",
   };
 

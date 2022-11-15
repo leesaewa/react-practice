@@ -1,12 +1,14 @@
 import { useCallback, useEffect, useState } from "react";
 import { useHistory, useParams } from "react-router-dom";
 import { IoIosArrowBack, IoMdThumbsUp, IoMdStar } from "react-icons/io";
+import Suggestions from "../components/suggestions";
 
 function Detail() {
   const { id } = useParams();
   const [loading, setLoading] = useState(true);
   const [movie, setDetails] = useState({});
   const [genres, setGenres] = useState([]);
+  const [movies, setSuggestion] = useState([]);
   const backBtn = useHistory();
 
   const backHistory = () => {
@@ -21,14 +23,23 @@ function Detail() {
     setLoading(false);
     setDetails(json.data.movie);
     setGenres(json.data.movie.genres);
+  }, [id]);
+
+  const getSuggestion = useCallback(async () => {
+    const json = await (
+      await fetch(`https://yts.mx/api/v2/movie_suggestions.json?movie_id=${id}`)
+    ).json();
+
+    setSuggestion(json.data.movies);
     console.log(json);
   }, [id]);
 
   useEffect(() => {
     if (id !== "" && id.length > 1) {
       getDetail();
+      getSuggestion();
     }
-  }, [getDetail, id]);
+  }, [getDetail, getSuggestion, id]);
 
   return (
     <main id="detail">
@@ -93,6 +104,17 @@ function Detail() {
               </figcaption>
             </figure>
           </div>
+
+          <article className="Suggestion-wrap">
+            <h2>Suggestions</h2>
+            {movies.map((sug) => (
+              <Suggestions
+                key={sug.id}
+                title={sug.title}
+                coverImg={sug.medium_cover_image}
+              />
+            ))}
+          </article>
         </section>
       )}
     </main>
