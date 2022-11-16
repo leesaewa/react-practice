@@ -27,7 +27,7 @@ function Home() {
       {GROUP_KEY.map((group) => {
         return (
           <section key={group}>
-            <h2>{group}</h2>
+            <h2 className="movie-ttl">{group}</h2>
             <Slide
               movieApi={`https://yts.mx/api/v2/list_movies.json?limit=10&${GROUP_BOX[group]}&sort_by=rating`}
             />

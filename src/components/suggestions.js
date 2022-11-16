@@ -4,10 +4,9 @@ function Suggestions({ title, coverImg, id }) {
   return (
     <li>
       <figure>
-        <img src={coverImg} />
+        <img src={coverImg} alt={title} />
         <figcaption>
           <h3>{title}</h3>
-
           <Link to={`/movie/${id}`}>More View</Link>
         </figcaption>
       </figure>

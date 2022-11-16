@@ -1,8 +1,8 @@
 import { IoIosArrowBack } from "react-icons/io";
 
-function SlideButton({ direction, onClick }) {
+function SlideButton({ btnName, onClick }) {
   return (
-    <button onClick={onClick} className={`btn-${direction}`}>
+    <button onClick={onClick} className={`btn-${btnName}`}>
       <IoIosArrowBack />
     </button>
   );

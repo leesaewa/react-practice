@@ -95,42 +95,57 @@ main {
     padding: 2rem;
   }
 
+  .movie-ttl {
+    margin: 2rem 0;
+    font-size: 2em;
+  }
+
   .slide-wrap {
     position: relative;
+    overflow: hidden;
+
     .button-box {
+      width: 100%;
       position: absolute;
-      left: 0;
-      top: 7%;
-      background-color: $white;
+      top: 26%;
+      z-index: 99;
 
       button {
-        color: $black;
+        position: absolute;
+        top: 0;
+        color: $white;
         width: 50px;
         height: 50px;
+        background-color: $black;
+        border: 1px solid transparent;
+        cursor: pointer;
 
         &:nth-child(1) {
           left: 0;
+          svg {
+            transform: scale(1.5);
+          }
         }
         &:nth-child(2) {
           right: 0;
+          svg {
+            transform: rotate(180deg) scale(1.5);
+          }
         }
       }
     }
   }
 
   .movie-wrapper {
-    @include width($ws: 90%);
-    padding: 4rem 0;
-    @include flexbox($flexW: wrap, $flexAI: flex-start);
-    border: 1px solid $white;
-    overflow: hidden;
+    @include flexbox($flexAI: flex-start, $flexJC: inherit);
+    position: relative;
 
     .movie-wrapper__item {
-      width: 18%;
+      flex: 0 0 auto;
+      width: 100%;
       background-color: $white;
       color: $black;
       padding: 2rem;
-      border-radius: 2rem;
 
       &:not(:last-child) {
         margin-bottom: 4rem;
@@ -361,28 +376,37 @@ main {
 }
 
 // responsive
+@media screen and (min-width: 768px) {
+  #main {
+    .movie-wrapper {
+      .movie-wrapper__item {
+        width: 48%;
+      }
+    }
+  }
+}
 @media screen and (min-width: 1024px) {
   #main {
     @include width();
 
-    // .movie-wrapper {
-    //   @include gridLayout($min: 48%, $gridAI: flex-start, $cGap: 2rem);
-    //   row-gap: 2rem;
+    .movie-wrapper {
+      @include gridLayout($min: 48%, $gridAI: flex-start, $cGap: 2rem);
+      row-gap: 2rem;
 
-    //   .movie-wrapper__item {
-    //     &:not(:last-child) {
-    //       margin-bottom: 0;
-    //     }
+      .movie-wrapper__item {
+        &:not(:last-child) {
+          margin-bottom: 0;
+        }
 
-    //     h2 {
-    //       font-size: 2em;
-    //     }
+        h2 {
+          font-size: 2em;
+        }
 
-    //     img {
-    //       width: auto;
-    //     }
-    //   }
-    // }
+        img {
+          width: auto;
+        }
+      }
+    }
   }
 
   #detail {
