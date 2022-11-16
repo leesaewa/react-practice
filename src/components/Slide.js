@@ -19,28 +19,27 @@ function Slide({ movieApi }) {
 
   //
   //
-  const slideRef = useRef();
+  const slideRef = useRef([movies]);
   const [currentSlide, setCurrentSlide] = useState(0);
 
   const nextSlide = () => {
-    setCurrentSlide(currentSlide - 1);
+    const isLastSlide = currentSlide === movies.length - 1;
+    const newIndex = isLastSlide ? 0 : currentSlide + 1;
+    setCurrentSlide(newIndex);
+    console.log(newIndex);
 
     slideRef.current.style.transition = `all 0.5s ease`;
-    slideRef.current.style.transform = `translateX(-${currentSlide}00%)`;
-    if (currentSlide === 0) {
-      setCurrentSlide(1);
-    }
+    slideRef.current.style.transform = `translateX(-${newIndex}00%)`;
   };
 
   const prevSlide = () => {
-    setCurrentSlide(currentSlide + 1);
+    const isFirstSlide = currentSlide === 0;
+    const newIndex = isFirstSlide ? movies.length - 1 : currentSlide - 1;
+    setCurrentSlide(newIndex);
+    console.log(newIndex);
+
     slideRef.current.style.transition = `all 0.5s ease`;
-    slideRef.current.style.transform = `translateX(-${currentSlide}00%)`;
-    if (movies.length % 4 <= currentSlide) {
-      setCurrentSlide(currentSlide - 1);
-    } else {
-      // setCurrentSlide(1);
-    }
+    slideRef.current.style.transform = `translateX(-${newIndex}00%)`;
   };
 
   return (
@@ -58,7 +57,6 @@ function Slide({ movieApi }) {
                 title={movie.title}
                 summary={movie.summary}
                 genres={movie.genres}
-                slideRef={slideRef}
               />
             ))}
           </ul>

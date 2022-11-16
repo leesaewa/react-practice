@@ -380,7 +380,7 @@ main {
   #main {
     .movie-wrapper {
       .movie-wrapper__item {
-        width: 48%;
+        width: 50%;
       }
     }
   }
@@ -390,8 +390,8 @@ main {
     @include width();
 
     .movie-wrapper {
-      @include gridLayout($min: 48%, $gridAI: flex-start, $cGap: 2rem);
-      row-gap: 2rem;
+      // @include gridLayout($min: 48%, $gridAI: flex-start, $cGap: 2rem);
+      // row-gap: 2rem;
 
       .movie-wrapper__item {
         &:not(:last-child) {

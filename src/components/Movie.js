@@ -1,7 +1,7 @@
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 
-function Movie({ id, coverImg, title, summary, genres, slideRef }) {
+function Movie({ id, coverImg, title, summary, genres }) {
   return (
     <li className="movie-wrapper__item">
       <h2>{title}</h2>
