@@ -1,12 +1,22 @@
 # react movie ratings site
 - 리액트 영화 평점 사이트
-- 
+- 보고 싶은 영화를 클릭하면 비슷한 장르의 영화를 추천함(SUGGEST THIS MOVIE)
+- React映画評点サイト
+- 映画をクリックすると似ているジャンルの映画をおすすめする(SUGGEST THIS MOVIE)
+
+
+## Preview
+### Main
+<img src="https://user-images.githubusercontent.com/97646713/209561501-0891cfd4-3b9e-4707-a79d-e9b0667a4e21.png">
+
+### Detail Page
+<img src="https://user-images.githubusercontent.com/97646713/209561505-d05a1d4e-7151-4e49-a69d-bc94ee15fbf6.png">
 
 ## using tool
 
 - reactJS
 - SCSS
-- API : 
+- API : <a href="https://yts.mx/api">YTS</a>
 
 ##### 문제점(221117~)
 
